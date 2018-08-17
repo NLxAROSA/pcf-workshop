@@ -10,7 +10,11 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL55Dialect
+workshopMessage:
+  text: from MySQL!
 ---
   profiles: h2
   jpa:
     generate-ddl: true
+  workshopMessage:
+    text: from H2!
