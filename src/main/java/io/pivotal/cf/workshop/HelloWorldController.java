@@ -8,12 +8,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloWorldController {
 
     private final MessageRepository messageRepository;
+    private final MessageConfigurationProperties messageConfigurationProperties;
 
     @Value("${workshopMessage.text}")
     private String messageString;
 
-    public HelloWorldController(MessageRepository messageRepository) {
+    public HelloWorldController(MessageRepository messageRepository, MessageConfigurationProperties messageConfigurationProperties) {
         this.messageRepository = messageRepository;
+        this.messageConfigurationProperties = messageConfigurationProperties;
     }
 
     @GetMapping
@@ -23,6 +25,6 @@ public class HelloWorldController {
 
     @GetMapping("/message")
     public String getMessage()  {
-        return "Hello " + messageString;
+        return "Hello " + messageConfigurationProperties.getText();
     }
 }
